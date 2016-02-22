@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var userNameField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
@@ -35,10 +35,11 @@ class LoginViewController: UIViewController {
         else {
             print("User is not logged in")
         }
-
+        
         
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,12 +54,15 @@ class LoginViewController: UIViewController {
                 print("User login failed.")
                 print(error.localizedDescription)
             } else {
+                
                 print("User logged in successfully")
+                self.performSegueWithIdentifier("homeSegueID", sender: nil)
+                
                 // display view controller that needs to shown after successful login
             }
         }
     }
-
+    
     @IBAction func onSignUp(sender: AnyObject) {
         let newUser = PFUser()
         
@@ -81,14 +85,14 @@ class LoginViewController: UIViewController {
         }
     }
     /*
-     MARK: - Navigation
-
-     In a storyboard-based application, you will often want to do a little preparation before navigation */
+    MARK: - Navigation
+    
+    In a storyboard-based application, you will often want to do a little preparation before navigation */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "homeTimeLine" {
             /*Set some parameter of homeTimeLine if you want to*/
         }
         
     }
-
+    
 }
